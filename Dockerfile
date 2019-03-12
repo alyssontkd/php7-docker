@@ -29,7 +29,6 @@ ADD 000-default.conf /etc/apache2/sites-available/000-default.conf
 WORKDIR /var/www/html
 
 ADD ./ .
-COPY index.php .
 
 #Comando para alterar o Dono de algum diretorio
 #RUN chown -R www-data:www-data diretorio1/ diretorio2/ diretorio3/
@@ -43,4 +42,5 @@ RUN a2enmod rewrite
 
 #EXPOSE 80
 
+RUN cp -av index.php ./app
 CMD ["apachectl", "-D", "FOREGROUND"]
