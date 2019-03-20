@@ -1,5 +1,11 @@
 FROM ubuntu:16.04
 
+MAINTAINER Alysson Vicuña <alysson.vicuna@gmail.com>
+ARG TIME_ZONE="America/Sao_Paulo"
+# Set the timezone.
+RUN echo ${TIME_ZONE} > /etc/timezone
+RUN dpkg-reconfigure -f noninteractive tzdata
+
 RUN apt-get update && \
     apt-get dist-upgrade -y && \
     apt-get install -y \
