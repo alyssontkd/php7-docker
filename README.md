@@ -54,14 +54,16 @@ PRETTY_NAME="CentOS Linux 7 (Core)"
 
 # Como instalar os pré-requisitos? 
 ## Instalando o git no CentOS7
+**A instalação padrão do GIT via repositório do CentOS consiste em um simples comando 'yum'**
+```
+$ sudo yum install git -y
+```
+
+## Instalando o git no Ubuntu, Deepin e família Debian
 **A instalação padrão do GIT via repositório do Ubuntu/Debian consiste em um simples comando 'apt-get'**
 ```
 $ sudo apt-get update
 $ sudo apt-get install git-core
-```
-**A instalação padrão do GIT via repositório do CentOS consiste em um simples comando 'yum'**
-```
-$ sudo apt-get install git -y
 ```
 
 **Para testar a versão instalada digite o comando `git --version` e tera algo como a saída abaixo (Qualquer Distribuição)**
@@ -74,19 +76,9 @@ git version 1.8.3.1
 ```
 $ sudo apt install docker.io
 ```
-**Para iniciar o docker digite o comando:**
-```
-$ sudo systemctl start docker
-$ sudo systemctl enable docker
-```
-**Prontinho! Para testar se seu docker foi instalado com sucesso digite o comando do docker que retorna a versão instalada. veja abaixo o camando e a saída**
-```
-$ docker --version
-Docker version 18.03.1-ce, build 9ee9f40
-```
-
 ## Instalando o docker a partir do repositório oficial do docker
 **Para iniciar a instalação via repositório oficial do docker, há a necessidade de instalar todos os pré-requisitos**
+## Instalando no Ubunto, Deepin e Familia Debian
 ```
 $ sudo apt update
 $ sudo apt install apt-transport-https ca-certificates curl software-properties-common
@@ -108,11 +100,22 @@ deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic nightly
 ```
 $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 $ sudo apt update
+$ sudo apt install docker-ce
+```
+**Para iniciar o docker digite o comando:**
+```
+$ sudo systemctl start docker
+$ sudo systemctl enable docker
 ```
 
-**Finalmente agora poderemos instalar o docker**
+## Instalando no CentOS7
 ```
-$ sudo apt install docker-ce
+$ sudo yum update
+$ sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+$ sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+$ sudo yum install docker-ce
+$ sudo usermod -aG docker $(whoami)
+$ sudo systemctl enable docker.service
 ```
 
 **Prontinho! Para testar se seu docker foi instalado com sucesso digite o comando do docker que retorna a versão instalada. veja abaixo o camando e a saída**
@@ -123,6 +126,7 @@ Docker version 18.03.1-ce, build 9ee9f40
 
 # Instalando o docker-compose
 **Baixe a última versão do docker-compose**
+## No Ubuntu, Deepin e família Debian
 ```
 $ sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
 ```
@@ -130,12 +134,21 @@ $ sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker
 ```
 $ sudo chmod +x /usr/local/bin/docker-compose
 ```
+
+## No CentOS, Mint e família RedHat
+```
+$ sudo yum install epel-release
+$ sudo yum install -y python-pip
+$ sudo pip install docker-compose
+$ sudo yum upgrade python*
+$ pip install --upgrade pip
+```
+
 **Pronto! Seu docker-compose já deve estar instalado. Valide a instalação com o comando abaixo:**
 ```
-# docker-compose --version
-```
-**O retorno do comando acima será algo como:**
-```
+$ docker-compose --version
+
+O retorno do comando acima será algo como:
 docker-compose version 1.21.2, build a133471
 ```
 
