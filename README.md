@@ -78,7 +78,7 @@ $ sudo apt install docker.io
 ```
 ## Instalando o docker a partir do repositório oficial do docker
 **Para iniciar a instalação via repositório oficial do docker, há a necessidade de instalar todos os pré-requisitos**
-## Instalando no Ubunto, Deepin e Familia Debian
+## Instalando no Ubuntu, Deepin e Familia Debian
 ```
 $ sudo apt update
 $ sudo apt install apt-transport-https ca-certificates curl software-properties-common
